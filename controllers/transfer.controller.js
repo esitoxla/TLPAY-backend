@@ -16,7 +16,7 @@ export const validateName = async (req, res, next) => {
         },
       }
     );
-    res.json(response.data);
+   res.status(200).json(response.data);
   } catch (err) {
     next({
       statusCode: err.response?.status || 500,
@@ -40,7 +40,7 @@ export const initiateTransfer = async (req, res, next) => {
         },
       }
     );
-    res.json(response.data);
+    res.status(200).json(response.data);
   } catch (err) {
     next({
       statusCode: err.response?.status || 500,
@@ -64,7 +64,7 @@ export const checkTransferStatus = async (req, res, next) => {
         },
       }
     );
-    res.json(response.data);
+    res.status(200).json(response.data);
   } catch (err) {
     next({
       statusCode: err.response?.status || 500,
