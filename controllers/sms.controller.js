@@ -6,7 +6,7 @@ import axios from "axios";
 export const sendSms = async (req, res, next) => {
   try {
     // Send POST request to Moolre API
-    const response = await axios.post(
+    const { data } = await axios.post(
       `${process.env.MOOLRE_BASE_URL}/open/sms/send`,
       req.body,
       {
@@ -18,7 +18,7 @@ export const sendSms = async (req, res, next) => {
     );
 
     // Send back response to client (frontend or Postman)
-    res.status(200).json(response.data);
+    res.status(200).json(data);
   } catch (err) {
     // Handle errors properly through your error middleware
     next({
