@@ -11,6 +11,17 @@ const app = express();
 
 app.use(express.json());
 
+const allowedOrigins = [
+  "http://localhost:5173",
+  
+];
+
+app.use(
+  cors({
+    origin: allowedOrigins,
+  })
+);
+
 //routes
 app.use("/api/transfer", transferRoute);
 app.use("/api/sms", smsRouter);
