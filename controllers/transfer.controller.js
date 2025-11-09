@@ -5,7 +5,7 @@ const { MOOLRE_BASE_URL, MOOLRE_API_USERNAME, MOOLRE_PRIVATE_KEY } = process.env
 // Validate Name
 export const validateName = async (req, res, next) => {
   try {
-    const { data } = await axios.post(
+    const response = await axios.post(
       `${MOOLRE_BASE_URL}/open/transact/validate`,
       req.body,
       {
@@ -16,7 +16,7 @@ export const validateName = async (req, res, next) => {
         },
       }
     );
-   res.status(200).json(data);
+   res.status(200).json(response.data);
   } catch (err) {
     next({
       statusCode: err.response?.status || 500,
@@ -29,7 +29,7 @@ export const validateName = async (req, res, next) => {
 // Initiate Transfer
 export const initiateTransfer = async (req, res, next) => {
   try {
-    const { data } = await axios.post(
+    const response = await axios.post(
       `${MOOLRE_BASE_URL}/open/transact/transfer`,
       req.body,
       {

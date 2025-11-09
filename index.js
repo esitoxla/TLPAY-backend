@@ -11,10 +11,7 @@ const app = express();
 
 app.use(express.json());
 
-const allowedOrigins = [
-  "http://localhost:5173",
-  
-];
+const allowedOrigins = ["http://localhost:5173", "https://tl-pay.netlify.app/"];
 
 app.use(
   cors({
