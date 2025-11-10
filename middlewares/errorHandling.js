@@ -10,20 +10,6 @@ export const errorHandler = (err, req, res, next) => {
     message = `Invalid ${err.path} with value ${err.value}`;
   }
 
-  //Happens when the data doesn’t pass your schema rules.
-  if (err.name === "ValidationError") {
-    statusCode = 400;
-    message = Object.values(err.errors)
-      .map((e) => e.message)
-      .join(", ");
-  }
-
-  //Happens when someone tries to create something that must be unique but already exists. Duplicate error (11000)
-  if (err.code === 11000) {
-    statusCode = 400;
-    const msg = Object.values(err.keyValue).join(", ");
-    message = `${msg} already exists`;
-  }
 
   //always send a JSON response
   res.status(statusCode).json({
