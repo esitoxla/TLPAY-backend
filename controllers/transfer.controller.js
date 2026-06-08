@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const { MOOLRE_BASE_URL, MOOLRE_API_USERNAME, MOOLRE_PRIVATE_KEY } = process.env;
+const { MOOLRE_BASE_URL, MOOLRE_API_USERNAME, MOOLRE_PUBLIC_KEY } = process.env;
 
 // Validate Name
 export const validateName = async (req, res, next) => {
@@ -12,9 +12,9 @@ export const validateName = async (req, res, next) => {
         headers: {
           "Content-Type": "application/json",
           "X-API-USER": MOOLRE_API_USERNAME,
-          "X-API-KEY": MOOLRE_PRIVATE_KEY, // Private key here
+          "X-API-KEY": MOOLRE_PUBLIC_KEY,
         },
-      }
+      },
     );
    res.status(200).json(response.data);
   } catch (err) {
@@ -36,9 +36,9 @@ export const initiateTransfer = async (req, res, next) => {
         headers: {
           "Content-Type": "application/json",
           "X-API-USER": MOOLRE_API_USERNAME,
-          "X-API-KEY": MOOLRE_PRIVATE_KEY, 
+          "X-API-KEY": MOOLRE_PUBLIC_KEY,
         },
-      }
+      },
     );
     res.status(200).json(response.data);
   } catch (err) {
@@ -60,9 +60,9 @@ export const checkTransferStatus = async (req, res, next) => {
         headers: {
           "Content-Type": "application/json",
           "X-API-USER": MOOLRE_API_USERNAME,
-          "X-API-KEY": MOOLRE_PRIVATE_KEY, 
+          "X-API-KEY": MOOLRE_PUBLIC_KEY,
         },
-      }
+      },
     );
     res.status(200).json(data);
   } catch (err) {
